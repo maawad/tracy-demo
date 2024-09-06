@@ -1,5 +1,5 @@
 
-# Custom Counter Example with Tracy
+# Custom user data with Tracy example
 
 This project demonstrates the use of the [Tracy Profiler](https://github.com/wolfpld/tracy) to profile key insertions and memory addresses during hash map operations. It streams custom counters and memory addresses to Tracy for real-time profiling.
 
