@@ -62,7 +62,7 @@ Inserting key: 1, at address: 0x7ffee5b1e910 (140732783034768)
 
 These memory addresses and keys will also appear in the Tracy Profiler UI.
 
-[](img/demo.png)
+![](img/demo.png)
 
 ## Credits
 
