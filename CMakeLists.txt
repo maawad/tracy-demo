@@ -23,14 +23,26 @@ CPMAddPackage(
     OPTIONS "TRACY_ENABLE ON" "TRACY_ON_DEMAND ON"
 )
 
-# Add the executable
-add_executable(TraceDemo main.cpp)
+set(SOURCE_FILES
+    "multithreaded_single_var.cpp"
+    "multithreaded_multiple_vars.cpp"
+    "simple.cpp"
+)
 
-# Define TRACY_ENABLE for the whole project
-target_compile_definitions(TraceDemo PRIVATE TRACY_ENABLE)
+# Loop over the source files and create executables
+foreach(SOURCE_FILE IN LISTS SOURCE_FILES)
+    # Extract the base name for each file (without extension)
+    get_filename_component(EXEC_NAME ${SOURCE_FILE} NAME_WE)
 
-# Explicitly include Tracy's public directory to find Tracy.hpp
-target_include_directories(TraceDemo PRIVATE ${Tracy_SOURCE_DIR}/public)
+    # Add an executable for each source file
+    add_executable(${EXEC_NAME} ${SOURCE_FILE})
 
-# Link Tracy library
-target_link_libraries(TraceDemo PRIVATE Tracy::TracyClient)
+    # Define TRACY_ENABLE for the whole project
+    target_compile_definitions(${EXEC_NAME} PRIVATE TRACY_ENABLE)
+
+    # Explicitly include Tracy's public directory to find Tracy.hpp
+    target_include_directories(${EXEC_NAME} PRIVATE ${Tracy_SOURCE_DIR}/public)
+
+    # Link Tracy library
+    target_link_libraries(${EXEC_NAME} PRIVATE Tracy::TracyClient)
+endforeach()

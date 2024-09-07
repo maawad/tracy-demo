@@ -44,15 +44,24 @@ This project demonstrates the use of the [Tracy Profiler](https://github.com/wol
 
 2. Run the executable:
    ```bash
-   ./build/TraceDemo 
+   ./build/simple 
    ```
+   Or,
+   ```bash
+   ./build/multithreaded_multiple_vars <numThreads> <insertsPerThread>
+   ```
+   Or,
+   ```bash
+   ./build/multithreaded_single_var <numThreads> <insertsPerThread>
+   ```
+
 
 The executable will:
 - Insert key-value pairs into a hash map.
 - Print memory addresses in both hexadecimal and decimal formats.
 - Send custom counters and memory addresses to the Tracy profiler.
 
-The code snippet is:
+There are a couple of examples that follow this simple code snippet is:
 
 ```c++
 int main() {
